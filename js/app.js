@@ -18,8 +18,8 @@ function sendPrompt() {
   input.value = '';
 }
 
-sendBtn.addEventListener('click', sendPrompt);
-input.addEventListener('keydown', (e) => {
+sendBtn?.addEventListener('click', sendPrompt);
+input?.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') sendPrompt();
 });
 
@@ -36,16 +36,18 @@ if (attachBtn && plusPopup) {
     attachBtn.setAttribute('aria-expanded', String(!isHidden));
   });
 
-  uploadPdfOption.addEventListener('click', () => {
-    plusPopup.classList.add('hidden');
-    attachBtn.setAttribute('aria-expanded', 'false');
-    pdfFileInput.click();
-  });
+  if (uploadPdfOption && pdfFileInput) {
+    uploadPdfOption.addEventListener('click', () => {
+      plusPopup.classList.add('hidden');
+      attachBtn.setAttribute('aria-expanded', 'false');
+      pdfFileInput.click();
+    });
+  }
 
   document.addEventListener('click', (e) => {
     if (!plusPopup.classList.contains('hidden') &&
-        !attachBtn.contains(e.target) &&
-        !plusPopup.contains(e.target)) {
+      !attachBtn.contains(e.target) &&
+      !plusPopup.contains(e.target)) {
       plusPopup.classList.add('hidden');
       attachBtn.setAttribute('aria-expanded', 'false');
     }
@@ -57,6 +59,7 @@ const listMenu = document.getElementById('list-menu');
 const progressFill = listMenu ? listMenu.querySelector('.progress-bar-fill') : null;
 
 function toggleMenu(open) {
+  if (!listMenu || !listBtn) return;
   const shouldOpen = open !== undefined ? open : !listMenu.classList.contains('open');
   if (shouldOpen) {
     listMenu.classList.add('open');
@@ -74,16 +77,18 @@ function toggleMenu(open) {
   }
 }
 
-listBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  toggleMenu();
-});
+if (listBtn && listMenu) {
+  listBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
 
-document.addEventListener('click', (e) => {
-  if (!listMenu.contains(e.target) && !listBtn.contains(e.target)) {
-    toggleMenu(false);
-  }
-});
+  document.addEventListener('click', (e) => {
+    if (!listMenu.contains(e.target) && !listBtn.contains(e.target)) {
+      toggleMenu(false);
+    }
+  });
+}
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
@@ -152,8 +157,7 @@ const menuPinnedBtn = document.getElementById('menu-pinned-btn');
 if (menuHistoryBtn) {
   menuHistoryBtn.addEventListener('click', () => {
     toggleMenu(false);
-    const historyTab = document.querySelector('.toggle button[data-tab="History"]');
-    if (historyTab) historyTab.click();
+    window.location.href = 'history.html';
   });
 }
 
@@ -237,8 +241,8 @@ if (userChip && profilePopup) {
 
   document.addEventListener('click', (e) => {
     if (!profilePopup.classList.contains('hidden') &&
-        !userChip.contains(e.target) &&
-        !profilePopup.contains(e.target)) {
+      !userChip.contains(e.target) &&
+      !profilePopup.contains(e.target)) {
       closeProfilePopup();
     }
   });
