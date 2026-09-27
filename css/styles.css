@@ -6,7 +6,7 @@
   --text: #080808;
   --muted: #6d6d6e;
   --accent: #1B4CA1;
-  --hover: #0c0c0c;
+  --hover: #f3af61;
   --menu-bg: #fce3c7;
   --menu-border: var(--border);
   --menu-text: var(--text);
@@ -68,7 +68,7 @@ body {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family:  Montserrat-Bold;
+  font-family: Montserrat-Bold;
   overflow: hidden;
 }
 
@@ -134,7 +134,7 @@ body {
   background: var(--menu-bg);
   border: 1px solid var(--menu-border);
   border-radius: 18px;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.15), 0 3px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15), 0 3px 10px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   z-index: 300;
@@ -596,8 +596,13 @@ h1.agenda {
 }
 
 @keyframes progress-shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(200%);
+  }
 }
 
 .progress-meta {
@@ -675,13 +680,21 @@ h1.agenda {
   color: #dc2626;
 }
 
-.nav-item:hover, .nav-item.active{ background:var(--hover); }
-.icon{ width:16px; height:16px; flex:none; }
+.nav-item:hover,
+.nav-item.active {
+  background: var(--hover);
+}
 
-a.nav-item{
-  text-decoration:none;
-  display:inline-flex;
-  align-items:center;
+.icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+a.nav-item {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
   color: var(--muted);
 }
 
