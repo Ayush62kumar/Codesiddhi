@@ -108,11 +108,12 @@ body {
 }
 
 .avatar {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), #1B4CA1);
+  object-fit: cover;
   flex: none;
+  display: block;
 }
 
 .user-name {
