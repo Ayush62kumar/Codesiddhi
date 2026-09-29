@@ -7,6 +7,18 @@
     <title>GyaanIQ AI</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/accessibility.js"></script>
+    <style>
+        /* Site-wide background logo (does not touch existing theme colors) */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: url("logo.png") center center / min(60vw, 500px) auto no-repeat;
+            opacity: 0.10;
+            pointer-events: none;
+        }
+    </style>
 </head>
 
 <body>
